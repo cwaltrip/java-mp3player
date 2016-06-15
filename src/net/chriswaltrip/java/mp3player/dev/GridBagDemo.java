@@ -1,4 +1,4 @@
-package net.chriswaltrip.java.mp3player;
+package net.chriswaltrip.java.mp3player.dev;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.

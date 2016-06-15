@@ -1,6 +1,7 @@
-package net.chriswaltrip.java.mp3player;
+package net.chriswaltrip.java.mp3player.dev;
 
 import javax.swing.SwingUtilities;
+import net.chriswaltrip.java.mp3player.SeekBar;
 
 public class NewMainView extends javax.swing.JPanel {
     

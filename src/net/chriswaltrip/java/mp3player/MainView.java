@@ -3,20 +3,26 @@ package net.chriswaltrip.java.mp3player;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 public class MainView extends JFrame {
     
+    JFileChooser chooser = new JFileChooser();
     DefaultListModel<String> playList = new DefaultListModel();
     JPanel container = new JPanel();
     JButton playButton = new JButton();
@@ -41,7 +47,60 @@ public class MainView extends JFrame {
     public MainView() {
         initView();
 //        initMenu();
-//        initBehavior();
+        initBehavior();
+    }
+    
+    private void initBehavior() {
+        chooser.setMultiSelectionEnabled(true);
+        chooser.setFileFilter(new AudioFileFilter());
+        
+        addButton.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        
+        });
+        
+        deleteButton.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        
+        });
+        
+        prevButton.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        
+        });
+        
+        playButton.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        
+        });
+        
+        nextButton.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        
+        });
+        
+        jPlayList.setModel(playList);
+        jPlayList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jPlayList.setLayoutOrientation(JList.VERTICAL);
+        jPlayList.addMouseListener(new MouseAdapter() { 
+        
+        });
+        
     }
     
     private void initView() {
@@ -87,9 +146,9 @@ public class MainView extends JFrame {
                 
         // Now Playing marquee
 //        playingPanel.setLayout(new BoxLayout(playingPanel, BoxLayout.PAGE_AXIS));
-        playingLabel.setText("Now Playing: ");
+        playingLabel.setText(" Now Playing: ");
         playingLabel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
-//        playingLabel.setBounds(5, 0, 100, 40);
+        playingLabel.setBounds(5, 0, 100, 40);
 //        playingPanel.add(playingLabel);
         
 	c.fill = GridBagConstraints.HORIZONTAL;

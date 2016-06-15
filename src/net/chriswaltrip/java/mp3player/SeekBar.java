@@ -11,10 +11,12 @@ import javazoom.jlgui.basicplayer.BasicPlayerException;
 
 public class SeekBar extends JProgressBar {
 
-    private int updatedValue = 0; //sharing between different scopes
+    // Sharing between different scopes
+    private int updatedValue = 0; 
 
     public void updateSeekBar(long progress, float totalVal) {
-        BackgroundExecutor.get().execute(new UpdatingTask(progress, totalVal)); //Another thread will calculate the relative position
+         // Another thread will calculate the relative position
+        BackgroundExecutor.get().execute(new UpdatingTask(progress, totalVal));
         setValue(updatedValue);
     }
 
@@ -31,7 +33,8 @@ public class SeekBar extends JProgressBar {
 
         @Override
         public void run() {
-            int lp = (int) (progress / 1000); //progress comes in microseconds
+            // Progress is in microseconds
+            int lp = (int) (progress / 1000); 
             int seekLenght = getMaximum();
             int n = (int) ((lp / (totalVal * 1000)) * seekLenght);
             updatedValue = lastSeekVal + n;
@@ -40,13 +43,9 @@ public class SeekBar extends JProgressBar {
 
     public SeekBar() {
         super();
-        setMaximum(10000); //it's smoother this way
+        // SetMaximum() to smooth the motion
+        setMaximum(10000);
         addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                
-            }
 
             @Override
             public void mousePressed(MouseEvent e) {
@@ -61,31 +60,32 @@ public class SeekBar extends JProgressBar {
             }
 
             @Override
-            public void mouseExited(MouseEvent e) {
-                
-            }
+            public void mouseReleased(MouseEvent e) { }
 
             @Override
-            public void mouseEntered(MouseEvent e) {
-                
-            }
+            public void mouseExited(MouseEvent e) { }
 
             @Override
-            public void mouseClicked(MouseEvent e) {
-                
-            }
+            public void mouseEntered(MouseEvent e) { }
+
+            @Override
+            public void mouseClicked(MouseEvent e) { }
         });
     }
 
     private void returnValueToPlayer(float val) throws BasicPlayerException {
+        // ?
     }
+
 }
 
 class BackgroundExecutor {
 
-    private static ExecutorService backgroundEx = Executors.newCachedThreadPool(); //UI thread shouldn't do math
+     // UI thread shouldn't do math
+    private static ExecutorService backgroundEx = Executors.newCachedThreadPool();
 
     public BackgroundExecutor() {
+        
     }
 
     public static ExecutorService get() {
