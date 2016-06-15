@@ -31,7 +31,7 @@ public class AudioPlayer extends BasicPlayer {
     
     private AudioPlayer() {
         super();
-        AudioPlayerListener listener = new AudioPlayerListener(this);
+        DefaultPlayerListener listener = new DefaultPlayerListener(this);
         super.addBasicPlayerListener(listener);
     }
     
@@ -51,20 +51,18 @@ public class AudioPlayer extends BasicPlayer {
             File file = new File(playList.get(index));
             System.out.println("Starting playback: " + file.getAbsolutePath());
             open(file);
-            super.play();
+            super.startPlayback();
             playing = true;
             paused = false;
         }
         if (paused) {
             resume();
         }
-//        startPlayback();
     }
 
     @Override
     public void stop() throws BasicPlayerException {
-//        stopPlayback();
-        super.stop();
+        super.stopPlayback();
         playing = false;
         paused = false;
         System.out.println("Stopped");
@@ -117,7 +115,7 @@ public class AudioPlayer extends BasicPlayer {
     }
 
     /**
-     * Getters and setters for status fields
+     * Getters and setters
      */
     
     public ArrayList<String> getPlaylist() {

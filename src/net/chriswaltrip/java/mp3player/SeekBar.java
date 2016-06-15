@@ -1,9 +1,8 @@
 package net.chriswaltrip.java.mp3player;
 
+import it.pievis.utils.BackgroundExecutor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JProgressBar;
@@ -77,18 +76,4 @@ public class SeekBar extends JProgressBar {
         // ?
     }
 
-}
-
-class BackgroundExecutor {
-
-     // UI thread shouldn't do math
-    private static ExecutorService backgroundEx = Executors.newCachedThreadPool();
-
-    public BackgroundExecutor() {
-        
-    }
-
-    public static ExecutorService get() {
-        return backgroundEx;
-    }
 }

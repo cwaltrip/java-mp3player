@@ -6,7 +6,7 @@ import javazoom.jlgui.basicplayer.BasicController;
 import javazoom.jlgui.basicplayer.BasicPlayerEvent;
 import javazoom.jlgui.basicplayer.BasicPlayerListener;
 
-public class AudioPlayerListener implements BasicPlayerListener {
+public class DefaultPlayerListener implements BasicPlayerListener {
 
     private AudioPlayer player;
     private long audioFileLength = 0L;
@@ -14,7 +14,13 @@ public class AudioPlayerListener implements BasicPlayerListener {
     private float fRate = 0F;
     private float duration = 0F;
 
-    public AudioPlayerListener(AudioPlayer player) {
+    public DefaultPlayerListener() {
+        super();
+        player = AudioPlayer.getPlayer();
+    }
+
+    public DefaultPlayerListener(AudioPlayer player) {
+        super();
         this.player = player;
     }
 
@@ -57,6 +63,50 @@ public class AudioPlayerListener implements BasicPlayerListener {
     @Override
     public void setController(BasicController arg0) {
         System.out.println("Call to unimplemented Mp3PlayerListener.setController()");
+    }
+
+    /**
+     * Getters and setters
+     */
+    
+    public AudioPlayer getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(AudioPlayer player) {
+        this.player = player;
+    }
+
+    public long getAudioFileLength() {
+        return audioFileLength;
+    }
+
+    public void setAudioFileLength(long audioFileLength) {
+        this.audioFileLength = audioFileLength;
+    }
+
+    public int getfSize() {
+        return fSize;
+    }
+
+    public void setfSize(int fSize) {
+        this.fSize = fSize;
+    }
+
+    public float getfRate() {
+        return fRate;
+    }
+
+    public void setfRate(float fRate) {
+        this.fRate = fRate;
+    }
+
+    public float getDuration() {
+        return duration;
+    }
+
+    public void setDuration(float duration) {
+        this.duration = duration;
     }
 
 }
